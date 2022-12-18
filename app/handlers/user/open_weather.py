@@ -49,7 +49,6 @@ async def get_weather_city(city) -> dict:
     url = 'https://api.openweathermap.org/data/2.5/weather'
     openweather_response = get(url,
                                params={'q': city, 'lang': 'ru', 'units': 'metric', 'APPID': WEATHER_API_KEY}).json()
-    print(f"openweather_response: {openweather_response}")
     if openweather_response['cod'] == '404':
         return openweather_response
     return await _parse_openweather_response(openweather_response)
@@ -80,11 +79,9 @@ async def answer_city_weather(msg: Message, state: FSMContext):  # Входна�
 async def send_weather(msg: Message, state: FSMContext):
     weather_out = await get_weather_city(msg.text)
     if weather_out['cod'] == '404':
-        print(f'Cod not 200! {weather_out["cod"]}')
         await msg.reply(weather_out['message'])
         await state.finish()
         return
-    print(f"OW data: {weather_out}")
     weather_message = f'📌 Погода в <b>{weather_out["city"]}</b>,\n👀 На улице <b>{weather_out["description"]}</b>\n' \
                       f'🌡 Температура: <b>{weather_out["temp"]}°C</b>,\n' \
                       f'🌡 Ощущается: <b>{weather_out["temp_feeling"]}°C</b>\n' \

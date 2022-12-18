@@ -1,1 +1,1 @@
-from . import bot_commands
+# from . import bot_commands

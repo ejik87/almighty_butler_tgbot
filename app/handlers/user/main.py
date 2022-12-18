@@ -16,7 +16,8 @@ async def __start(msg: Message, state: FSMContext):
     user_id = msg.from_user.id
     # keyboard = get_main_keyboard(user_id)
     await bot.send_message(user_id, f'Привет, {msg.from_user.full_name}!')
-    await bot.send_message(user_id, 'Введи команду, а я исполню! Например /weather', reply_markup=ReplyKeyboardRemove())
+    await bot.send_message(user_id, 'Введи команду, а я исполню!\n'
+                                    'Например /weather', reply_markup=ReplyKeyboardRemove())
 
 
 # # @rate_limit(5, 'help')
