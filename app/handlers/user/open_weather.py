@@ -3,7 +3,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from requests import get
 from datetime import datetime
-from config import WEATHER_API_KEY
+from app.config import WEATHER_API_KEY
 
 
 async def _parse_wind_direction(weather_dict: dict) -> str:
