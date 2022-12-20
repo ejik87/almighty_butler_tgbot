@@ -1,0 +1,8 @@
+README.md
+.gitignore
+.dockerignore
+config.php
+.env
+.idea
+.git
+__pycache__
